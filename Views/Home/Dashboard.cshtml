@@ -1,0 +1,34 @@
+@model List<Transaction>
+<div class="text-left">
+    <h1 class="display-4 text-secondary">Welcome, @ViewBag.Name</h1>
+</div>
+<div class="text-right">
+    <p>Current balance: <span class="text-primary">$@ViewBag.Balance</span></p>
+    <a href="/LogOut">Log Out</a>
+</div>
+<form asp-action="Transaction" asp-controller="Home" method="POST">
+    <div>
+        @if(ViewBag.Balance <= 0)
+        {
+            <p class="text-danger">Money not available</p>
+        }
+        <label>Deposit/Withdraw</label>
+        <input type="number" name="FormValue">
+        <button class="btn btn-warning btn-sm" type="submit">Submit</button>
+    </div>
+</form>
+<div class="col-5" style="overflow-y: scroll; height: 300px;">
+    <table class="table table-hover">
+        <thead>
+            <th>Amount</th>
+            <th>Head</th>
+        </thead>
+        @foreach (var transaction in Model)
+        {
+        <tbody>
+            <td>$@transaction.Amount</td>
+            <td>@transaction.CreatedAt</td>
+        </tbody>
+        }
+    </table>
+</div>

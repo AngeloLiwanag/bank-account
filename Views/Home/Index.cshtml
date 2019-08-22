@@ -1,0 +1,54 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+    <h1 class="display-4 text-secondary">Register</h1>
+</div>
+<div class="row">
+    <form class="col-5" asp-action="CreateUser" asp-controller="Home" method="POST">
+        <div class="form-group">
+            <fieldset>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+                <br>
+                <label class="control-label">First Name</label>
+                <input class="form-control" asp-for="FirstName" type="text">
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+                <br>
+                <label class="control-label">Last Name</label>
+                <input class="form-control" asp-for="LastName" type="text">
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <br>
+                <label class="control-label">Email Address</label>
+                <input class="form-control" asp-for="Email" type="email">
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <br>
+                <label class="control-label">Password</label>
+                <input class="form-control" asp-for="Password" type="text">
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <fieldset>
+                <label class="control-label">Confirm Password</label>
+                <input class="form-control" asp-for="Confirm" type="text">
+            </fieldset>
+        </div>
+        <button class="btn btn-secondary btn-sm" type="submit">Submit</button>
+    </form>
+    <div class="col">
+        <a href="/Login">Already Registered?</a>
+    </div>
+</div>
